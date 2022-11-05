@@ -1,0 +1,28 @@
+Redis
+
+	后台启动redis
+		redis-server redis.conf
+	查看是否启动
+		netstat -lanp|grep 6379        →6379为redis默认端口
+		    结果 tcp        0      0 0.0.0.0:6379            0.0.0.0:*               LISTEN      34330/redis-server  
+	   或   ps -ef|grep redis
+		    结果 root        972      1  0 21:52 ?        00:00:01 /usr/local/redis/bin/redis-server 127.0.0.1:6379    ←
+			  root      31939   2933  0 22:14 pts/0    00:00:00 grep --color=auto redis
+	关闭redis
+		kill -9 972
+
+使用redis自带客户端
+	1.
+		redis-cli [options] [commonds]
+		
+		常见options :
+			1.  -h 127.0.0.1 : 指定要连接的redis节点的ip地址,默认是127.0.0.1
+			2.  -p 6379 :  指定要连接的redis节点的端口,默认是6379
+			3.  -a redis : 指定redis的访问密码
+
+		commonds : redis的操作命令
+			ping : 与redis服务器做心跳测试,服务器会正常返回pong
+
+		不指定commonds时,会进入 redis-cli的交互融合
+
+	
